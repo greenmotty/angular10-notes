@@ -1,0 +1,27 @@
+$box-height: 200px;
+$box-width: 200px;
+
+fieldset{
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  width: $box-width;
+  height: 180px;
+}
+
+:host ::ng-deep .note-content {
+  font-size: 14px;
+}
+
+:host ::ng-deep .note-date {
+  font-size: 10px;
+}
+
+:host ::ng-deep .note-add-icon {
+  width: $box-width / 2;
+  height: $box-height / 2;
+  position: absolute;
+  top: 28%;
+  left: 28%;
+}

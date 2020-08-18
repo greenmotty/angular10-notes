@@ -1,0 +1,39 @@
+<div>
+  <h2 mat-dialog-title>Login</h2>
+</div>
+<div>
+  <mat-dialog-content class="mat-typography">
+    <div class="container" novalidate>
+      <form [formGroup]="formGroup"
+            (ngSubmit)="login()"
+            class="form">
+        <mat-form-field class="form-element">
+          <input matInput
+                 placeholder="Username"
+                 formControlName="username">
+          <mat-error *ngIf="!formGroup.controls['username'].valid && formGroup.controls['username'].touched">
+            Required field
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <input matInput
+                 placeholder="Password"
+                 type="password"
+                 formControlName="password">
+          <mat-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
+            Required field
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+  </mat-dialog-content>
+</div>
+<div>
+  <button
+    mat-raised-button
+    mat-primary
+    color="primary"
+    (click)="login()"
+    [disabled]="!formGroup.valid">Login</button>
+</div>

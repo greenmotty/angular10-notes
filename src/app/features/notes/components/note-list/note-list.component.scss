@@ -1,0 +1,16 @@
+.welcome-title{
+  margin: auto;
+  display: table;
+  font-size: 5vw;
+}
+
+.note-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.logout-link {
+  position: absolute;
+  right: 0px;
+}

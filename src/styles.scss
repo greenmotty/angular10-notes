@@ -1,0 +1,10 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html {
+  font-size: 16px;
+
+  mat-form-field {
+    display: inline-block;
+    width: 100%;
+  }
+}

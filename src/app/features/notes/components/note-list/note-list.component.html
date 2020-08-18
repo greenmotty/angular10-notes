@@ -1,0 +1,19 @@
+<a mat-button
+   class="logout-link"
+   (click)="logout()"
+   color="primary">Logout</a>
+
+<span class="welcome-title">Welcome to post board</span>
+
+<div class="note-list">
+    <app-note-element (action)="openDialog(null)">
+      <img class="note-add-icon" src="../../../../../assets/icons/add.svg">
+    </app-note-element>
+
+    <app-note-element *ngFor="let note of notes"
+                      (action)="openDialog(note)"
+                      [note]="note">
+      <div class="note-date">{{note.date | date: 'long'}}</div>
+      <span class="note-content">{{note.content}}</span>
+    </app-note-element>
+</div>
