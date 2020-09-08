@@ -7,4 +7,14 @@ html {
     display: inline-block;
     width: 100%;
   }
+
+  body {
+    background: url('/assets/images/login-background.jpg') no-repeat fixed;
+    background-size: cover;
+    margin: 0 auto;
+    font-family: 'Roboto', 'Open Sans', 'OpenSans', sans-serif;
+    @supports (object-fit: cover) {
+      object-fit: cover;
+    }
+  }
 }

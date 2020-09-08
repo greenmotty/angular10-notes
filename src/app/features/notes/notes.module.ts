@@ -7,6 +7,7 @@ import {NoteModalComponent} from './components/note-modal/note-modal.component';
 import {NoteElementComponent} from './components/note-element/note-element.component';
 import {MaterialModule} from '../material.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     NotesRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class NotesModule { }

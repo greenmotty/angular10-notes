@@ -1,11 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
-import {NoteService} from './features/notes/services/note.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http';
+import {NgxLocalStorageModule} from 'ngx-localstorage';
 
 @NgModule({
   declarations: [
@@ -15,9 +15,11 @@ import {AppRoutingModule} from './app-routing.module';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxLocalStorageModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [NoteService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

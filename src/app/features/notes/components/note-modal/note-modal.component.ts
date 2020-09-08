@@ -2,9 +2,11 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NoteModel} from '../../models/note.model';
+import {ActionModel} from '../../models/action.model';
 
 @Component({
   selector: 'app-note-modal',
+  styleUrls: ['note-modal.component.scss'],
   templateUrl: './note-modal.component.html'
 })
 export class NoteModalComponent implements OnInit {
@@ -23,9 +25,25 @@ export class NoteModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.isEdit = (this.data.note?.id) ? true : false;
+    this.initForm();
+  }
 
-    if (this.data) {
+  private createForm(): void {
+    this.formGroup = this.formBuilder.group({
+      authorName: [null, [
+          Validators.required,
+          Validators.maxLength(50)
+      ]],
+      content: [null, [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(1000)]]
+    });
+  }
+
+  private initForm(): void {
+    this.isEdit = (this.data && this.data.note?.id) ? true : false;
+    if (this.isEdit) {
       this.note = this.data.note;
       this.formGroup.patchValue({
         authorName: this.data.note?.authorName,
@@ -34,21 +52,11 @@ export class NoteModalComponent implements OnInit {
     }
   }
 
-  private createForm(): void {
-    this.formGroup = this.formBuilder.group({
-      authorName: [null, Validators.required],
-      content: [null, [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(1000)]]
-    });
-  }
-
   onClick(action): void {
     const note = new NoteModel();
     note.id = (this.isEdit) ? this.note.id : null;
     note.authorName = this.formGroup.controls.authorName.value;
     note.content = this.formGroup.controls.content.value;
-    this.dialogRef.close({action , value: note});
+    this.dialogRef.close({action, note} as ActionModel);
   }
 }

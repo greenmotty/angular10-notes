@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>
-  <span *ngIf="isEdit; else elseBlock">A note from {{note.authorName}}</span>
+<h2 mat-dialog-title class="modal-title">
+  <span *ngIf="isEdit; else elseBlock" [title]="note.authorName">A note from {{note.authorName}}</span>
   <ng-template #elseBlock><span>Post a new note</span></ng-template>
 </h2>
 <mat-dialog-content class="mat-typography">
@@ -11,8 +11,9 @@
         <input matInput
                placeholder="Author name"
                formControlName="authorName">
-        <mat-error *ngIf="!formGroup.controls['authorName'].valid && formGroup.controls['authorName'].touched">
-          Required field
+
+        <mat-error *ngIf="formGroup.controls['authorName'].errors && formGroup.controls['authorName'].touched">
+          {{ formGroup.controls['authorName'] | errorMessage }}
         </mat-error>
       </mat-form-field>
 
@@ -23,8 +24,8 @@
                   matAutosizeMinRows="2"
                   matAutosizeMaxRows="5"
                   formControlName="content"></textarea>
-        <mat-error *ngIf="!formGroup.controls['content'].valid && formGroup.controls['content'].touched">
-          Required field, between 5 and 1000 characters.
+        <mat-error *ngIf="formGroup.controls['content'].errors && formGroup.controls['content'].touched">
+          {{ formGroup.controls['content'] | errorMessage }}
         </mat-error>
       </mat-form-field>
     </form>
@@ -33,7 +34,7 @@
 <mat-dialog-actions align="end">
   <a mat-button
      *ngIf="isEdit"
-     (click)="onClick('delete')"
+     (click)="onClick('DELETE')"
      color="warn">Delete</a>
 
   <button mat-raised-button mat-dialog-close>Cancel</button>
@@ -41,6 +42,6 @@
           mat-raised-button
           mat-primary
           color="primary"
-          (click)="onClick((isEdit) ? 'edit' : 'add')"
+          (click)="onClick((isEdit) ? 'EDIT' : 'ADD')"
           [disabled]="!formGroup.valid">Post</button>
 </mat-dialog-actions>

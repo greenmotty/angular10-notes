@@ -5,15 +5,19 @@ import {UserService} from './services/user.service';
 import {AuthenticationRoutingModule} from './authentication-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../material.module';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [
+      LoginComponent
+  ],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
   providers: [
     UserService

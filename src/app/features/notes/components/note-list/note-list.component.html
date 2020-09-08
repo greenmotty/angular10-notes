@@ -3,7 +3,8 @@
    (click)="logout()"
    color="primary">Logout</a>
 
-<span class="welcome-title">Welcome to post board</span>
+<div class="welcome-title">Welcome to post board</div>
+<div class="no-results" *ngIf="!notes?.length">There are no posts, add new post</div>
 
 <div class="note-list">
     <app-note-element (action)="openDialog(null)">
@@ -14,6 +15,6 @@
                       (action)="openDialog(note)"
                       [note]="note">
       <div class="note-date">{{note.date | date: 'long'}}</div>
-      <span class="note-content">{{note.content}}</span>
+      <span class="note-content" [title]="note.content">{{note.content}}</span>
     </app-note-element>
 </div>

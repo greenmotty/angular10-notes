@@ -1,5 +1,7 @@
+@import "../../../../../styles/common";
+
 $box-height: 200px;
-$box-width: 200px;
+$box-width: $box-height;
 
 fieldset{
   cursor: pointer;
@@ -8,10 +10,26 @@ fieldset{
   margin: 10px;
   width: $box-width;
   height: 180px;
+  display: table-cell;
+  border-color: snow;
+  border-style: solid;
+  border-radius: 5px;
+  box-shadow: 5px 5px #888888;
+
+  legend.note-title {
+    min-width: 0;
+    max-width: $box-width;
+    position: relative;
+    @include text-overflow();
+  }
 }
 
 :host ::ng-deep .note-content {
   font-size: 14px;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  max-width: $box-width;
 }
 
 :host ::ng-deep .note-date {

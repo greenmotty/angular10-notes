@@ -1,0 +1,5 @@
+@import "../../../../../styles/common";
+
+.mat-dialog-title {
+  @include text-overflow();
+}

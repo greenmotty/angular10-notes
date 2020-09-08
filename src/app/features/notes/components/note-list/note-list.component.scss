@@ -1,7 +1,15 @@
-.welcome-title{
-  margin: auto;
+@mixin center() {
+  margin: 0 auto;
   display: table;
-  font-size: 5vw;
+}
+
+.welcome-title{
+  font-size: 4vw;
+  @include center();
+}
+
+.no-results {
+  @include center();
 }
 
 .note-list {
@@ -13,4 +21,8 @@
 .logout-link {
   position: absolute;
   right: 0px;
+  color: #d2d3db;
+  padding: 3px;
+  margin: 3px;
+  border: 1px solid #d2d3db;
 }
