@@ -19,10 +19,6 @@ export class NoteModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder) {}
 
-  onSubmit(note: NoteModel): void {
-    this.dialogRef.close(note);
-  }
-
   ngOnInit(): void {
     this.createForm();
     this.initForm();

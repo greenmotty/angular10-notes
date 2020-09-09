@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NoteModel} from '../../models/note.model';
 import {MatDialog} from '@angular/material/dialog';
 import {NoteModalComponent} from '../note-modal/note-modal.component';
@@ -68,7 +68,12 @@ export class NoteListComponent implements OnInit {
     });
   }
 
-  logout(): void {
+  public logout(): void {
     this.userService.logoutUser();
+  }
+
+  public trackByFn(index, item: NoteModel): number {
+    // Date is unique
+    return new Date(item.date).getTime();
   }
 }
