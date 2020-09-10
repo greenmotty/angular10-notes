@@ -4,6 +4,7 @@ $box-height: 200px;
 $box-width: $box-height;
 
 fieldset{
+  content-visibility: auto;
   cursor: pointer;
   position: relative;
   overflow: hidden;

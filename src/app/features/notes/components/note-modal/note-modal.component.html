@@ -12,8 +12,8 @@
                placeholder="Author name"
                formControlName="authorName">
 
-        <mat-error *ngIf="formGroup.controls['authorName'].errors && formGroup.controls['authorName'].touched">
-          {{ formGroup.controls['authorName'] | errorMessage }}
+        <mat-error *ngIf="authorName.errors && authorName.touched">
+          {{ authorName.errors | errorMessage }}
         </mat-error>
       </mat-form-field>
 
@@ -24,8 +24,8 @@
                   matAutosizeMinRows="2"
                   matAutosizeMaxRows="5"
                   formControlName="content"></textarea>
-        <mat-error *ngIf="formGroup.controls['content'].errors && formGroup.controls['content'].touched">
-          {{ formGroup.controls['content'] | errorMessage }}
+        <mat-error *ngIf="content.errors && content.touched">
+          {{ content.errors | errorMessage }}
         </mat-error>
       </mat-form-field>
     </form>
@@ -34,7 +34,7 @@
 <mat-dialog-actions align="end">
   <a mat-button
      *ngIf="isEdit"
-     (click)="onClick('DELETE')"
+     (click)="onClick(actions.Delete)"
      color="warn">Delete</a>
 
   <button mat-raised-button mat-dialog-close>Cancel</button>
@@ -42,6 +42,6 @@
           mat-raised-button
           mat-primary
           color="primary"
-          (click)="onClick((isEdit) ? 'EDIT' : 'ADD')"
+          (click)="onClick((isEdit) ? actions.Edit : actions.Add)"
           [disabled]="!formGroup.valid">Post</button>
 </mat-dialog-actions>

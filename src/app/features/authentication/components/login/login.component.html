@@ -1,39 +1,41 @@
 <div>
-  <h2 mat-dialog-title>Login</h2>
+    <h2 mat-dialog-title>Login</h2>
 </div>
 <div>
-  <mat-dialog-content class="mat-typography">
-    <div class="container" novalidate>
-      <form [formGroup]="formGroup"
-            (ngSubmit)="login()"
-            class="form">
-        <mat-form-field class="form-element">
-          <input matInput
-                 placeholder="Username"
-                 formControlName="username">
-          <mat-error *ngIf="formGroup.controls['username'].errors && formGroup.controls['username'].touched">
-            {{ formGroup.controls['username'] | errorMessage }}
-          </mat-error>
-        </mat-form-field>
+    <mat-dialog-content class="mat-typography">
+        <div class="container" novalidate>
+            <form [formGroup]="formGroup"
+                  (ngSubmit)="login()"
+                  class="form">
+                <mat-form-field class="form-element">
+                    <input matInput
+                           placeholder="Username"
+                           formControlName="username">
+                    <mat-error *ngIf="username.errors && username.touched">
+                        {{ username.errors | errorMessage }}
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field class="form-element">
-          <input matInput
-                 placeholder="Password"
-                 type="password"
-                 formControlName="password">
-          <mat-error *ngIf="formGroup.controls['password'].errors && formGroup.controls['password'].touched">
-            {{ formGroup.controls['password'] | errorMessage }}
-          </mat-error>
-        </mat-form-field>
-      </form>
-    </div>
-  </mat-dialog-content>
-</div>
-<div>
-  <button
-    mat-raised-button
-    mat-primary
-    color="primary"
-    (click)="login()"
-    [disabled]="!formGroup.valid">Login</button>
+                <mat-form-field class="form-element">
+                    <input matInput
+                           placeholder="Password"
+                           type="password"
+                           formControlName="password">
+                    <mat-error *ngIf="password.errors && password.touched">
+                        {{ password.errors | errorMessage }}
+                    </mat-error>
+                </mat-form-field>
+                <div>
+                    <button
+                            type="submit"
+                            mat-raised-button
+                            mat-primary
+                            color="primary"
+                            (click)="login()"
+                            [disabled]="!formGroup.valid">Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </mat-dialog-content>
 </div>

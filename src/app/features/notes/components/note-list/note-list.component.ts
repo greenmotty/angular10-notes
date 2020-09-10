@@ -58,13 +58,12 @@ export class NoteListComponent implements OnInit {
       if (!result?.action) {
         return;
       }
-      if (result.action === Actions.Add){
-        this.addNote(result.note);
-      } else if (result.action === Actions.Edit){
-        this.editNote(result.note);
-      } else if (result.action === Actions.Delete){
-        this.deleteNote(result.note);
-      }
+      const functionsMap = {
+        [Actions.Add]: this.addNote.bind(this),
+        [Actions.Edit]: this.editNote.bind(this),
+        [Actions.Delete]: this.deleteNote.bind(this)
+      };
+      functionsMap[result.action](result.note);
     });
   }
 
@@ -72,8 +71,9 @@ export class NoteListComponent implements OnInit {
     this.userService.logoutUser();
   }
 
+
   public trackByFn(index, item: NoteModel): number {
     // Date is unique
-    return new Date(item.date).getTime();
+    return item.date;
   }
 }

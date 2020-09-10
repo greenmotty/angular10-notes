@@ -8,10 +8,10 @@
 
 <div class="note-list">
     <app-note-element (action)="openDialog(null)">
-      <img class="note-add-icon" src="../../../../../assets/icons/add.svg">
+      <img class="note-add-icon" src="/assets/icons/add.svg">
     </app-note-element>
 
-    <app-note-element *ngFor="let note of notes;trackBy: trackByFn"
+    <app-note-element *ngFor="let note of notes; trackBy: trackByFn"
                       (action)="openDialog(note)"
                       [note]="note">
       <div class="note-date">{{note.date | date: 'long'}}</div>

@@ -1,8 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NoteModel} from '../../models/note.model';
 import {ActionModel} from '../../models/action.model';
+import {Actions} from '../../enums/actions.enum';
 
 @Component({
   selector: 'app-note-modal',
@@ -13,6 +14,18 @@ export class NoteModalComponent implements OnInit {
   public formGroup: FormGroup;
   public note: NoteModel = new NoteModel();
   public isEdit = false;
+
+  public get actions(): typeof Actions {
+    return Actions;
+  }
+
+  get authorName(): AbstractControl {
+    return this.formGroup.get('authorName');
+  }
+
+  get content(): AbstractControl {
+    return this.formGroup.get('content');
+  }
 
   constructor(
     public dialogRef: MatDialogRef<NoteModalComponent>,
